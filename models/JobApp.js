@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+//model for a job application 
 
 const JobAppSchema = new mongoose.Schema({
 	title: {
@@ -20,5 +21,5 @@ const JobAppSchema = new mongoose.Schema({
 	},
 		
 });
-module.export = mongoose.models("JobApp",JobAppSchema);
+module.exports = mongoose.model("JobApp",JobAppSchema);
 

@@ -20,7 +20,7 @@ router.get("/getJobApp", async(req, res) => {
 router.post("/addJobApp",async(req,res,next)=>{
 	try{
 		const{Title,Description}=req.body;
-		await.jobAppService.addJobApp(Title,Description);
+		await jobAppService.addJobApp(Title,Description);
 		 res.send({ success: true, msg: "Job Added"});
     } catch (err) {
         res.send({ success: false, msg: "Job not Added!", err})
@@ -29,10 +29,10 @@ router.post("/addJobApp",async(req,res,next)=>{
 
 //route de delete a job Application
 
-router.delete("/deleteJobApp/:title", async(req, res) => {
+router.delete("/deleteJobApp/:id", async(req, res) => {
   try {
-    const title = req.params.title;
-    jobAppService.deleteJobApp(title);
+    const id = req.params.id;
+    jobAppService.deleteJobApp(id);
     res.send({ success: true, msg: "Job deleted deleted"})
   } catch (error) {
     res.send({ success: false, msg: "Job not deleted  not added!"})
@@ -40,5 +40,5 @@ router.delete("/deleteJobApp/:title", async(req, res) => {
 });
 
 module.exports = router;
-//this is far from over there is testing left to do
+//seems to be working fine now deleteJobApp still needs some tweaks
 

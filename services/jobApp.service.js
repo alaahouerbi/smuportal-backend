@@ -1,25 +1,24 @@
 const jobApp = require("../models/jobApp")
+
 function jobAppService() {
   async function getJobApp() {
-    return JobApp.find({})
+    return jobApp.find({})
   }
 // this is really ugly needs to be changed Parameters are Upercase and fields are lowercase
-	// postedon is set as default now in the model should i still specify it here ??
+	// posted on is set as default data.now in the model no need to add it here 
   async function addJobApp(Title,Description) {
-    return jobApp.create({title: Title, description: Description, postedOn: Date.now}   
+    return jobApp.create({title: Title, description: Description}   
   )
   }
-//specifying the title is not enough will fix later
-  async function deleteJobApp(Title) {
-    return JobApp.deleteOne({title:Title})
+//is _id hidden will this work later with the front end? not sure
+  async function deleteJobApp(id) {
+    return jobApp.deleteOne({_id:id})
   }
 
   return {
     getJobApp,
-    deleteJobApp,
-    addJobApp
-    
-    
+    addJobApp,
+    deleteJobApp
   }
 }
 module.exports=	jobAppService;
