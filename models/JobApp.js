@@ -8,13 +8,6 @@ const JobAppSchema = new mongoose.Schema({
    		 min: 2,
    		 max: 255
 	  },
-	jobAppId:{
-		 type:number
-		 unique:true
-		 required: true,
-   		 min: 1000000000,
-   		 max: 9999999999999,
-	},
 	description:{
 		type:String,
 		min:2,
@@ -23,6 +16,7 @@ const JobAppSchema = new mongoose.Schema({
 	postedOn:{
 		type:Date,
 		required:true,
+		default:Date.now,
 	},
 		
 });
