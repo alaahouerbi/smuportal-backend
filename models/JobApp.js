@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const JobAppSchema = new mongoose.Schema({
-	Title: {
+	title: {
    		 type: String,
    		 required: true,
    		 lowercase: true,
@@ -15,11 +15,16 @@ const JobAppSchema = new mongoose.Schema({
    		 min: 1000000000,
    		 max: 9999999999999,
 	},
-	Description:{
+	description:{
 		type:String,
 		min:2,
 		max:5000,
 	},
+	postedOn:{
+		type:Date,
+		required:true,
+	},
+		
 });
 module.export = mongoose.models("JobApp",JobAppSchema);
 
