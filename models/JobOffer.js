@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-//model for a job application 
+//model for a job offers 
 
-const JobAppSchema = new mongoose.Schema({
+const JobOfferSchema = new mongoose.Schema({
 	title: {
    		 type: String,
    		 required: true,
@@ -21,5 +21,5 @@ const JobAppSchema = new mongoose.Schema({
 	},
 		
 });
-module.exports = mongoose.model("JobApp",JobAppSchema);
+module.exports = mongoose.model("JobOffer",JobOfferSchema);
 
