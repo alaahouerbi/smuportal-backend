@@ -16,5 +16,5 @@ router.get("/getJobApplication", async(req,res)=> {
 });
 
 //route to add A job Application
-
-router.post
+module.exports = router;
+//router.post

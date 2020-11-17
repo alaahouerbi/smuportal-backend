@@ -1,15 +1,15 @@
 const mongoose = require("mongoose");
-const { schema } = require("./JobOffer");
+//const { schema } = require("./JobOffer"); somehow this line made it crash throwing overwrite module or something
 //model for a job applications
 
-const jobApplicatioSchema = new mongoose.Schema({
+const jobApplicationSchema = new mongoose.Schema({
     JobOffer:{
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
       ref: 'jobOffer',
       required: true
     },
     User:{
-        type:Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref:'User',
         required: true
     },
@@ -20,4 +20,4 @@ const jobApplicatioSchema = new mongoose.Schema({
 
     
 });
-module.exports=mongoose.model("JobApplication",jobApplicatioSchema);
+module.exports=mongoose.model("JobApplication",jobApplicationSchema);
