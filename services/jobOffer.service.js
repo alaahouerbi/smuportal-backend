@@ -10,6 +10,7 @@ function jobOfferService() {
     return jobOffer.create({title: Title, description: Description}   
   )
   }
+  
 //is _id hidden will this work later with the front end? not sure
   async function deletejobOffer(id) {
     return jobOffer.deleteOne({_id:id})

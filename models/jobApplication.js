@@ -20,4 +20,6 @@ const jobApplicationSchema = new mongoose.Schema({
 
     
 });
+//attemp to index jobOffer and User to be unique i must drop schema first i guess
+jobApplicationSchema.index({ 'JobOffer':1,'User':1 },{ unique:true });
 module.exports=mongoose.model("JobApplication",jobApplicationSchema);
