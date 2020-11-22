@@ -6,8 +6,8 @@ function jobOfferService() {
   }
 // this is really ugly needs to be changed Parameters are Upercase and fields are lowercase
 	// posted on is set as default data.now in the model no need to add it here 
-  async function addjobOffer(Title,Description) {
-    return jobOffer.create({title: Title, description: Description}   
+  async function addjobOffer(Title,Description,userID) {
+    return jobOffer.create({title: Title, description: Description,User:userID}   
   )
   }
   

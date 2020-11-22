@@ -1,5 +1,6 @@
 const Router = require("express").Router;
 const jobOfferService = require("../../services/jobOffer.service")();
+const verifyToken = require("../../helpers/verifyToken");
 const jobOffer = require("../../models/jobOffer");
 
 const router = Router({
@@ -17,10 +18,10 @@ router.get("/getjobOffer", async(req, res) => {
 
 //route to Add a job offer
 
-router.post("/addjobOffer",async(req,res,next)=>{
+router.post("/addjobOffer",verifyToken,async(req,res,next)=>{
 	try{
 		const{Title,Description}=req.body;
-		await jobOfferService.addjobOffer(Title,Description);
+		await jobOfferService.addjobOffer(Title,Description,User.findById(req.decodedToken._id));
 		 res.send({ success: true, msg: "Job Added"});
     } catch (err) {
         res.send({ success: false, msg: "Job not Added!", err})
