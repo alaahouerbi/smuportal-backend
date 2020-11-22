@@ -18,7 +18,12 @@ const JobOfferSchema = new mongoose.Schema({
 		type:Date,
 		required:true,
 		default:Date.now,
-	},
+	}, 
+	User:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'User',
+        required: true
+    },
 		
 });
 module.exports = mongoose.model("JobOffer",JobOfferSchema);
