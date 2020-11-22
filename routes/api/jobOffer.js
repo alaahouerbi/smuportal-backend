@@ -1,6 +1,6 @@
 const Router = require("express").Router;
 const jobOfferService = require("../../services/jobOffer.service")();
-const verifyToken = require("../../helpers/verifyToken");
+const { verifyToken } = require("../../helpers/verifyToken");
 const jobOffer = require("../../models/jobOffer");
 const User = require("../../models/User");
 
