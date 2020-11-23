@@ -18,7 +18,7 @@ function jobApplicationService(){
                 path:"User",
                 select:"_id"
             }
-        })
+        }).find({JobOffer.User._id:id}) // this is wrong TA will have to look into this
         .lean().exec());
     }
    //function to addAjobApplication needs a job app and a user
