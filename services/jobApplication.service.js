@@ -1,5 +1,5 @@
 const jobApplication =require("../models/jobApplication");
-const JobOffer = require("../models/JobOffer");
+//const JobOffer = require("../models/JobOffer"); //somehow this line makes everything bug
 const jobOfferService = require("./jobOffer.service");
 
 function jobApplicationService(){
@@ -8,7 +8,7 @@ function jobApplicationService(){
         return jobApplication.find({})
     }
     //returns job applications made to the job offer the current user created
-    async function getJobApplicationByOfferUser(id){
+   async function getJobApplicationByOfferUser(id){
         const query ={};
         return (jobApplication.find(query)
         .populate({
@@ -18,7 +18,7 @@ function jobApplicationService(){
                 path:"User",
                 select:"_id"
             }
-        }).find({JobOffer.User._id:id}) // this is wrong TA will have to look into this
+        }).find({}) // this is wrong TA will have to look into this
         .lean().exec());
     }
    //function to addAjobApplication needs a job app and a user
@@ -31,7 +31,7 @@ function jobApplicationService(){
 return {
     getJobApplication,
     addJobApplication,
-    getJobApplicationByOfferUser
+   getJobApplicationByOfferUser
 }
 }
 module.exports=jobApplicationService;
