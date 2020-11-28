@@ -29,6 +29,15 @@ router.post("/addjobOffer", verifyToken,async (req, res) => {
       res.send({ success: false, msg: "Job not Added!", err });
     }
   });
+  //route to get job Offer application
+  router.get("/getjobOffer/:id",async(req,res)=>{
+    try{
+      const jobOffers=await jobOfferService.getJobApplicationsForJobOffer(req.params.id);
+      res.send(jobOffers);
+    }catch(err){
+      res.json({succes:false,msg:"failed"});
+    }
+  });
 
 //route de delete a job offer
 

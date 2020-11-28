@@ -18,10 +18,11 @@ router.get("/getJobApplication", async(req,res)=> {
 });
 
 //route to add A job Application
-router.post("/applyForJob",verifyToken, async(req,res)=>{
+router.post("/applyForJob/:joboffer",verifyToken, async(req,res)=>{
     try{
         let user=await User.findById(req.decodedToken._id);
-        await jobApplicationService.addJobApplication(req.body,user);
+        const job=req.params.joboffer;
+        await jobApplicationService.addJobApplication(job,user);
         res.send({ success: true, msg: "Job application Added" });
     }catch (err) {
         res.send({ success: false, msg: "Job application not Added!", err });

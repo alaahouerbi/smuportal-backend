@@ -1,4 +1,6 @@
+const { Mongoose } = require("mongoose");
 const jobApplication =require("../models/jobApplication");
+const jobOffer = require("../models/jobOffer");
 //const JobOffer = require("../models/JobOffer"); //somehow this line makes everything bug
 const jobOfferService = require("./jobOffer.service");
 
@@ -23,7 +25,9 @@ function jobApplicationService(){
     }
    //function to addAjobApplication needs a job app and a user
    async function addJobApplication(JobOffer,User){
-       return jobApplication.create({JobOffer: JobOffer, User:User})
+       
+      jobApplication.create({JobOffer: JobOffer, User:User});
+      jobOffer.findByIdAndUpdate(jobOffer,{$push:{jobApp:Mongoose.Types.ObjectId(jobApplication.find)}}
    }
 
 
