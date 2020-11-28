@@ -18,4 +18,4 @@ const TagsSchema = new mongoose.Schema({
 
 });
 
-module.exports = mongoose.model("Book", bookSchema);
+module.exports = mongoose.model("Tags", tagsSchema);
