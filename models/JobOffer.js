@@ -25,7 +25,7 @@ const JobOfferSchema = new mongoose.Schema({
         required: true
 	},
 	JobApps:[{type:mongoose.Schema.Types.ObjectId,
-	ref:'jobApplication'}]
+	ref:'JobApplication'}]
 		
 });
 module.exports = mongoose.model("JobOffer",JobOfferSchema);

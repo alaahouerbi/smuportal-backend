@@ -25,7 +25,7 @@ router.post("/applyForJob/:joboffer",verifyToken, async(req,res)=>{
         await jobApplicationService.addJobApplication(job,user);
         res.send({ success: true, msg: "Job application Added" });
     }catch (err) {
-        res.send({ success: false, msg: "Job application not Added!", err });
+        res.send({ success: false, msg: "Job application not Added!", err:err });
       }
 });
 module.exports = router;

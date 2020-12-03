@@ -25,10 +25,13 @@ function jobApplicationService(){
     }
    //function to addAjobApplication needs a job app and a user
    async function addJobApplication(JobOffer,User){
-       
-      jobApplication.create({JobOffer: JobOffer, User:User});
-      jobOffer.findByIdAndUpdate(jobOffer,{$push:{jobApp:Mongoose.Types.ObjectId(jobApplication.find)}}
+      try{ 
+      var id=jobApplication.create({JobOffer: JobOffer, User:User});
+      return jobOffer.findByIdAndUpdate(JobOffer._id,{$push:{jobApps:Mongoose.Types.ObjectId(id)}});
+   }catch(error){
+       console.error();
    }
+}
 
 
 

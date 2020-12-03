@@ -35,7 +35,7 @@ router.post("/addjobOffer", verifyToken,async (req, res) => {
       const jobOffers=await jobOfferService.getJobApplicationsForJobOffer(req.params.id);
       res.send(jobOffers);
     }catch(err){
-      res.json({succes:false,msg:"failed"});
+      res.json({succes:false,msg:"failed",err});
     }
   });
 
