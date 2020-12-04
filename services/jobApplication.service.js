@@ -11,7 +11,7 @@ function jobApplicationService(){
     }
     //returns job applications made to the job offer the current user created
    async function getJobApplicationByOfferUser(id){
-        const query ={};
+        const query ={_id:id};
         return (jobApplication.find(query)
         .populate({
             path:'jobOffer',
@@ -27,9 +27,14 @@ function jobApplicationService(){
    async function addJobApplication(JobOffer,User){
       try{ 
       var id=jobApplication.create({JobOffer: JobOffer, User:User});
-      return jobOffer.findByIdAndUpdate(JobOffer._id,{$push:{jobApps:Mongoose.Types.ObjectId(id)}});
+      var jobo=jobOffer.findById(JobOffer._id);
+      jobo.jobApps.push(id);
+      
+      return (await jobo).save();
+     
    }catch(error){
-       console.error();
+       console.log(jobo);
+       throw error;
    }
 }
 

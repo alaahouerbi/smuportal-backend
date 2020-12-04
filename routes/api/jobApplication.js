@@ -1,7 +1,6 @@
 const Router = require("express").Router;
 const jobApplicationService = require("../../services/jobApplication.service")();
 const {verifyToken} = require("../../helpers/verifyToken");
-const jobApplication = require("../../models/jobApplication");
 const User = require("../../models/User");
 
 const router = Router({
@@ -25,7 +24,7 @@ router.post("/applyForJob/:joboffer",verifyToken, async(req,res)=>{
         await jobApplicationService.addJobApplication(job,user);
         res.send({ success: true, msg: "Job application Added" });
     }catch (err) {
-        res.send({ success: false, msg: "Job application not Added!", err:err });
+        res.json({ success: false, msg: "Job application not Added!", err:err });
       }
 });
 module.exports = router;
