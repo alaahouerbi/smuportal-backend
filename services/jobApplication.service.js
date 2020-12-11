@@ -25,17 +25,27 @@ function jobApplicationService(){
     }
    //function to addAjobApplication needs a job app and a user
    async function addJobApplication(JobOffer,User){
-      try{ 
-      var id=jobApplication.create({JobOffer: JobOffer, User:User});
-      var jobo=jobOffer.findById(JobOffer._id);
-      jobo.jobApps.push(id);
-      
-      return (await jobo).save();
+    
      
-   }catch(error){
-       console.log(jobo);
-       throw error;
-   }
+      
+      const id= await jobApplication.create({JobOffer: JobOffer, User:User});
+      
+      
+      const jobo= await jobOffer.findById(JobOffer);
+     
+      
+      jobo.JobApps.push( id._id);
+     
+      
+        jobo.save();
+     
+       return jobo;
+     
+ 
+}
+async function deleteAllJobApps(){
+    return jobApplication.deleteMany();
+
 }
 
 
@@ -43,7 +53,8 @@ function jobApplicationService(){
 return {
     getJobApplication,
     addJobApplication,
-   getJobApplicationByOfferUser
+   getJobApplicationByOfferUser,
+   deleteAllJobApps
 }
 }
 module.exports=jobApplicationService;
