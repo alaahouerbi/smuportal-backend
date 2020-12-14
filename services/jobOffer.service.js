@@ -18,7 +18,7 @@ function jobOfferService() {
   }
   //get job applications
   async function getJobApplicationsForJobOffer(jobOfferID){
-    return jobOffer.findById(jobOfferID);
+    return jobOffer.findById(jobOfferID).populate({path:'JobApps',populate:{path:'User'}}).exec();
    // .select("jobApps -_id").lean().exec();
   }
 //is _id hidden will this work later with the front end? not sure
